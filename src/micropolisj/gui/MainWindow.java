@@ -143,6 +143,7 @@ public class MainWindow extends JFrame
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.POPDEN_OVERLAY", MapState.POPDEN_OVERLAY));
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.GROWTHRATE_OVERLAY", MapState.GROWTHRATE_OVERLAY));
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.LANDVALUE_OVERLAY", MapState.LANDVALUE_OVERLAY));
+		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.MUSEUM_EDUCATION_OVERLAY", MapState.MUSEUM_EDUCATION_OVERLAY));
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.CRIME_OVERLAY", MapState.CRIME_OVERLAY));
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.POLLUTE_OVERLAY", MapState.POLLUTE_OVERLAY));
 		overlaysMenu.add(makeMapStateMenuItem("menu.overlays.TRAFFIC_OVERLAY", MapState.TRAFFIC_OVERLAY));
@@ -1047,11 +1048,11 @@ public class MainWindow extends JFrame
 
 		b6.add(makeToolBtn(MicropolisTool.AIRPORT));
 		
-		//Add the NEW_BUILDING icon to the tool bar
+		//Add the MUSEUM icon to the tool bar
 		c.gridy++;
 		Box b7 = new Box(BoxLayout.X_AXIS);
 		gridBox.add(b7,c);
-		b7.add(makeToolBtn(MicropolisTool.NEW_BUILDING));
+		b7.add(makeToolBtn(MicropolisTool.MUSEUM));
 
 		// add glue to make all elements align toward top
 		c.gridy++;

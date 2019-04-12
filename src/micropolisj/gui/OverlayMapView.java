@@ -159,6 +159,18 @@ public class OverlayMapView extends JComponent
 			}
 		}
 	}
+	
+	private void drawEducationMap(Graphics gr)
+	{
+		int [][] A = engine.museumMap;
+
+		for (int y = 0; y < A.length; y++) {
+			for (int x = 0; x < A[y].length; x++) {
+				maybeDrawRect(gr, getCI(10 + A[y][x]),x*6,y*6,6,6);
+			}
+		}
+	}
+	
 
 	private void drawCrimeMap(Graphics gr)
 	{
@@ -275,6 +287,26 @@ public class OverlayMapView extends JComponent
 		}
 		return CLEAR;
 	}
+	
+	private int checkEducationOverlay(BufferedImage img, int xpos, int ypos, int tile)
+	{
+		int e = engine.getEducationImpact(xpos, ypos);
+		Color c = getCI(e);
+		if (c == null) {
+			return tile;
+		}
+
+		int pix = c.getRGB();
+		for (int yy = 0; yy < TILE_HEIGHT; yy++) {
+			for (int xx = 0; xx < TILE_WIDTH; xx++) {
+				img.setRGB(
+					xpos*TILE_WIDTH+xx,
+					ypos*TILE_HEIGHT+yy,
+					pix);
+			}
+		}
+		return CLEAR;
+	}
 
 	private int checkTrafficOverlay(BufferedImage img, int xpos, int ypos, int tile)
 	{
@@ -359,6 +391,10 @@ public class OverlayMapView extends JComponent
 				case LANDVALUE_OVERLAY:
 					tile = checkLandValueOverlay(img, x, y, tile);
 					break;
+					
+				case MUSEUM_EDUCATION_OVERLAY:
+					tile = checkEducationOverlay(img, x, y, tile);
+					break;
 
 				default:
 				}
@@ -390,6 +426,8 @@ public class OverlayMapView extends JComponent
 			drawRateOfGrowth(gr); break;
 		case POPDEN_OVERLAY:
 			drawPopDensity(gr); break;
+		case MUSEUM_EDUCATION_OVERLAY:
+			drawEducationMap(gr); break;
 		default:
 		}
 

@@ -117,6 +117,7 @@ public class NotificationPane extends JPanel
 		String buildingStr = zone.building != -1 ? s_strings.getString("zone."+zone.building) : "";
 		String popDensityStr = s_strings.getString("status."+zone.popDensity);
 		String landValueStr = s_strings.getString("status."+zone.landValue);
+		String educationCoverageStr = s_strings.getString("status."+zone.educationCoverage);
 		String crimeLevelStr = s_strings.getString("status."+zone.crimeLevel);
 		String pollutionStr = s_strings.getString("status."+zone.pollution);
 		String growthRateStr = s_strings.getString("status."+zone.growthRate);
@@ -153,6 +154,10 @@ public class NotificationPane extends JPanel
 		c1.gridy = ++c2.gridy;
 		p.add(new JLabel(strings.getString("notification.value_lbl")), c1);
 		p.add(new JLabel(landValueStr), c2);
+		
+		c1.gridy = ++c2.gridy;
+		p.add(new JLabel(strings.getString("notification.education_lbl")), c1);
+		p.add(new JLabel(educationCoverageStr), c2);
 
 		c1.gridy = ++c2.gridy;
 		p.add(new JLabel(strings.getString("notification.crime_lbl")), c1);

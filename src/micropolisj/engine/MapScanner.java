@@ -42,7 +42,7 @@ class MapScanner extends TileBehavior
 		STADIUM_FULL,
 		AIRPORT,
 		SEAPORT,
-		NEW_BUILDING; //Placeholder enum for new building. Change to building name if making a new building
+		MUSEUM; 
 	}
 
 	@Override
@@ -85,8 +85,8 @@ class MapScanner extends TileBehavior
 		case SEAPORT:
 			doSeaport();
 			return;
-		case NEW_BUILDING:
-			doNewBuilding(); //Call the NEW_BUILDING placeholder function
+		case MUSEUM:
+			doMuseum(); 
 			return;
 		default:
 			assert false;
@@ -208,19 +208,55 @@ class MapScanner extends TileBehavior
 		city.powerPlants.add(new CityLocation(xpos, ypos));
 	}
 	
-	//Placeholder for a new building
-	//Look to the other do<building name>() functions to guidance on what this function should do.
-	void doNewBuilding()
-	{
-		//Very basic building functionality. Checks for power and does "repair"
-		boolean powerOn = checkZonePower();
-		if ((city.cityTime % 8) == 0) {
-			repairZone(NEW_BUILDING, 3);
-		}
+	void museumPopGrowth() {
+		double rpop = city.resPop * 1.5;
+		city.resPop = (int)Math.ceil(rpop);
+		double cpop = city.comPop * 1.2;
+		city.comPop = (int)Math.ceil(cpop);
+		double ipop = city.indPop * 1.1;
+		city.indPop = (int)Math.ceil(ipop);
 	}
+
+	
+	void doMuseum()
+	{
+		boolean powerOn = checkZonePower();
+		city.museumCount++;
+		if ((city.cityTime % 8) == 0) {
+			repairZone(MUSEUM, 3);
+		}
+		if (powerOn) {
+			museumPopGrowth();
+		}
+//		int z;
+//		if (powerOn) {
+//			museumPopGrowth();
+//			z = city.museumEffect;
+//		} else {
+//			z = city.museumEffect/2;
+//		}
+//		traffic.mapX = xpos;
+//		traffic.mapY = ypos;
+//		if (!traffic.findPerimeterRoad()) {
+//			z /= 2;
+//		}
+//		city.museumMap[ypos/8][xpos/8] += z;
+	}
+	
+// to test if the pop grows properly due to the addition of museum, insert print commands between statements to see
+	//System.out.println("lastcitypop before: " + city.lastCityPop);
+	//System.out.println("    res before: " + city.resPop);
+	//System.out.println("    res after: " + city.resPop);
+	//System.out.println("        com before: " + city.comPop);
+	//System.out.println("        com after: " + city.comPop);
+	//System.out.println("            ind before: " + city.indPop);
+	//System.out.println("            ind after: " + city.indPop);
+	//System.out.println("lastcitypop after: " + city.lastCityPop);
+
 
 	void doFireStation()
 	{
+		System.out.println("before: fire length  " + city.fireStMap.length);
 		boolean powerOn = checkZonePower();
 		city.fireStationCount++;
 		if ((city.cityTime % 8) == 0) {
@@ -236,6 +272,7 @@ class MapScanner extends TileBehavior
 
 		traffic.mapX = xpos;
 		traffic.mapY = ypos;
+		
 		if (!traffic.findPerimeterRoad()) {
 			z /= 2;
 		}
@@ -247,6 +284,7 @@ class MapScanner extends TileBehavior
 	{
 		boolean powerOn = checkZonePower();
 		city.policeCount++;
+		//System.out.print(city.policeCount);
 		if ((city.cityTime % 8) == 0) {
 			repairZone(POLICESTATION, 3);
 		}
