@@ -182,6 +182,7 @@ public class Micropolis
 	int roadEffect = 32;
 	int policeEffect = 1000;
 	int fireEffect = 1000;
+	int museumEffect = 1000;
 
 	int cashFlow; //net change in totalFunds in previous year
 
@@ -1195,7 +1196,6 @@ public class Micropolis
 								lvflag++;
 							
 							if (tile == MUSEUM) {
-								System.out.println("        found a museum!!!!!!!");
 								elevel += 64;
 							}
 						}
