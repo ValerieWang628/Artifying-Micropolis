@@ -22,6 +22,7 @@ public class ZoneStatus
 	/** Number from 5 to 8, 5=Slum, 6=Lower Class, etc. */
 	public int landValue;
 	/** Number from 9 to 12, 9=Safe, 10=Light, 11=Moderate, etc. */
+	public int educationCoverage;
 	public int crimeLevel;
 	/** Number from 13 to 16, 13=None, 14=Moderate, 15=Heavy, etc. */
 	public int pollution;
