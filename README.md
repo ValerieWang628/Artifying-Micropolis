@@ -53,6 +53,8 @@ How the education coverage looks like:
 <p align="center">
 <img src="https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/EducationRadiation.png" width ="300" height="271"/>
 </p>
+<img src="https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/EducationCoverage.png" width ="300" height="271"/>
+</p>
 
 ## Design Reflection
 
