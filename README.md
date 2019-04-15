@@ -12,7 +12,7 @@ The primary design documentation is a one-page design chart that concisely concl
 -- This design approach is inspired by [Stone Librande's GDC talk on one-page design](https://www.gdcvault.com/play/1012356/One-Page).
 Through one page, readers will be able to understand the core mechanism in the easiest way. And for the whole SimCity program where every mechanism can be conlcuded in one sheet, the entire program consists of multiple one-pagers.
 
-The complete PDF version of the one-page design is here: [Design Chart]()
+The complete PDF version of the one-page design is here: [Design Chart](https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/FinalDesignDocForMuseum.pdf)
 
 Here is a snippet of the main design document:
 <p align="center">
