@@ -14,4 +14,4 @@ Through one page, readers will be able to understand the core mechanism in the e
 
 The complete one-page design is here: [Design Chart]()
 
-![Snippet of the design document](https://github.com/ValerieWang628/pfgd-micropolis/edit/master/designDocForMuseums/FinalDesignDocForMuseumJPG.jpg)
+![Snippet of the design document](https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/FinalDesignDocForMuseumJPG.jpg)
