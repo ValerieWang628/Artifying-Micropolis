@@ -56,7 +56,7 @@ How the education coverage looks like:
 
 ## Design Reflection
 
-Most of my reflection is reflected in the [Postmortem](). In this document, I listed three things went wrong and right respectively during my implementation. Overall, this is a successful museum implementation.
+Most of my reflection is reflected in the [Postmortem](https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/Postmortem%20for%20museum%20design.pdf). In this document, I listed three things went wrong and right respectively during my implementation. Overall, this is a successful museum implementation.
 
 I also would like to address the future scope here. SimCity is a very good program for game designers to create new mechanisms, despite the archaic convention of Java coding. I would like to add more interesting buildings in the future. 
 
