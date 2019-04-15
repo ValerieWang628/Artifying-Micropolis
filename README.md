@@ -1,5 +1,4 @@
-# Adaptations of the original Micropolis
-#### -- Adding museum as a new building into the SimCity
+# Adding museums to Micropolis - by Yunzi Wang
 
 ## Project Overview
 This is a program that is based on the orginal Micropolis game.
