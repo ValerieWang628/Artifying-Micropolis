@@ -1,4 +1,4 @@
-# Adding museums to Micropolis - by Yunzi Wang
+# Adding museums to Micropolis -- by Yunzi Wang
 
 ## Project Overview
 This is a program that is based on the orginal Micropolis game.
