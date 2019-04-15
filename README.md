@@ -25,7 +25,12 @@ Adding one mechanism is not simply squeezing some equations into the whole progr
 ## Steps for implementation
 To successfully add a museum mechanism into the SimCity, there are several important steps.
 
-First, the UI for museum -- that is, the pixelated icon. 
+**First, the UI for museum -- that is, the pixelated icon.** 
 I decided a museusm to be the same size as the police station as well as the fire station (3 * 3 size).
 And I later used the Apple Preview to paint the icon.
-<img src="https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/Pixelated&Icon&for&Museums.png"/>
+<img src="https://github.com/ValerieWang628/pfgd-micropolis/blob/master/designDocForMuseums/Pixelated%20Icon%20for%20Museums.png" width ="600" height="316"/>
+
+**Second, make a map.**
+Basically what I did is to add museum tiles into the whole program. For this part, it is rather similar to a police station. 
+At the same time, this game is a grid-based game. It scans every tile at different frequencies.
+
