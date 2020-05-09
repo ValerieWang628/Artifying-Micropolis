@@ -70,7 +70,7 @@ Now, education coverage has been successfully embedded into the map overlays. If
 To successfully add a museum mechanism into the SimCity, there are several important steps.
 
 
-### 1. Graphics for museums -- the icon.
+## 1. Graphics for museums -- the icon.
 
 I decided a museusm to be the same size as the police station as well as the fire station (3 * 3 size).
 And I later used Apple Preview to paint the icon (I would like to apologize for the incorrect shading of the building -- I was not familiar with any existing pixel drawing tool. Please bear with my limited toolset). 
@@ -81,7 +81,7 @@ And I later used Apple Preview to paint the icon (I would like to apologize for 
 </p>
 
 
-### 2. Register the museum as a new building type into the index system.
+## 2. Register the museum as a new building type into the index system.
 
  #### 📍 Add new tile constants to the index dictionary
  
@@ -136,7 +136,7 @@ Thus, to successfully register a museum into the system, I had to create a new i
 	967 museum@16,32 (conducts)
 	968 museum@32,32 (conducts)
 ```
-### 3. Develop the corresponding infrastructures for the museum.
+## 3. Develop the corresponding infrastructures for the museum.
 
 Other than static index, adding museums requires following implementations:
 
@@ -183,7 +183,7 @@ Other than static index, adding museums requires following implementations:
 	}
 ```
 #### 📍 Initialize musuem behaviors
-👇🏻Code Snippet: ((many other non-museum behaviors are removed for simplicity))
+👇🏻Code Snippet: (many other non-museum behaviors are removed for simplicity)
 ```java
     Map<String,TileBehavior> tileBehaviors;
     
@@ -202,7 +202,7 @@ Other than static index, adding museums requires following implementations:
 		this.tileBehaviors = bb;
 	}
 ```	
-### 4. Prepare for the stats change!	
+## 4. Prepare for the stats change!	
  #### 📍 Add a function to define museum behaviors
  👇🏻Code Snippet:
 ```java
@@ -251,7 +251,7 @@ Other than static index, adding museums requires following implementations:
 	}
 ```	
 	
-### 5. Implement the real-time education coverage map.
+## 5. Implement the real-time education coverage map.
 
  #### 📍 Update the function to store zone status
 👇🏻Code Snippet:
