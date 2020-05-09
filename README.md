@@ -67,12 +67,12 @@ Now, education coverage has been successfully embedded into the map overlays. If
 
 
 ## Implementation Details
-To successfully add a museum mechanism into the SimCity, there are several important steps.
+To successfully add a museum mechanic into the SimCity, there are several important steps.
 
 
 ## 1. Graphics for museums -- the icon.
 
-I decided a museusm to be the same size as the police station as well as the fire station (3 * 3 size).
+I decided that the museum should be the same size as the police station as well as the fire station (3 * 3 size).
 And I later used Apple Preview to paint the icon (I would like to apologize for the incorrect shading of the building -- I was not familiar with any existing pixel drawing tool. Please bear with my limited toolset). 
 
 👇🏻This is how the icons look like:
