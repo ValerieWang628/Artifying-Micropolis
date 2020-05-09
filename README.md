@@ -27,7 +27,7 @@ The complete PDF version of the one-page design is here: [Design Chart](https://
 
 👇🏻Here is a snippet of the main design document:
 <p align="center">
-<img src="https://raw.githubusercontent.com/ValerieWang628/Micropolis-with-Museums/master/designDocForMuseums/FinalDesignDocForMuseumJPG.jpg" width="600" height="340" />
+<img src="https://raw.githubusercontent.com/ValerieWang628/Micropolis-with-Museums/master/designDocForMuseums/FinalDesignDocForMuseumJPG.jpg" width="800" height="449" />
 </p>
 
 It can be easily seen from the design doc that adding a museum will involve three main aspects: 
