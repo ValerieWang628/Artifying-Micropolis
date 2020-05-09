@@ -95,27 +95,27 @@ For example,  dirt patches are indexed as 0 and 1; river sprites start from 3, e
 
 👇🏻 This is the public class that stores tile constants:
 It matches the spritesheet provided above. (Some indexes are slightly different from Gingold's chart due to this ported Java version.)
-
+```java
     public class TileConstants{
-		public static final short CLEAR = -1;
-		public static final char DIRT = 0;
-		static final char RIVER = 2;
-		static final char REDGE = 3;
-		static final char CHANNEL = 4;
-		static final char RIVEDGE = 5;
-		static final char FIRSTRIVEDGE = 5;
-		static final char LASTRIVEDGE = 20;
-		static final char TREEBASE = 21;
-		static final char WOODS_LOW = TREEBASE;
-		static final char WOODS = 37;
-		static final char WOODS_HIGH = 39;
-		static final char WOODS2 = 40;
-		static final char WOODS5 = 43;
-		static final char RUBBLE = 44;
-		static final char LASTRUBBLE = 47;
-		// the index goes to 936...
-		}
-
+	public static final short CLEAR = -1;
+	public static final char DIRT = 0;
+	static final char RIVER = 2;
+	static final char REDGE = 3;
+	static final char CHANNEL = 4;
+	static final char RIVEDGE = 5;
+	static final char FIRSTRIVEDGE = 5;
+	static final char LASTRIVEDGE = 20;
+	static final char TREEBASE = 21;
+	static final char WOODS_LOW = TREEBASE;
+	static final char WOODS = 37;
+	static final char WOODS_HIGH = 39;
+	static final char WOODS2 = 40;
+	static final char WOODS5 = 43;
+	static final char RUBBLE = 44;
+	static final char LASTRUBBLE = 47;
+	// the index goes to 936...
+	}
+```
 Thus, to successfully register a museum into the system, I had to create a new index for the museum so the system will identity the building type when scanning all the tiles.👇🏻
 
 	    static  final  char  MUSEUM  =  964;
@@ -124,7 +124,7 @@ Thus, to successfully register a museum into the system, I had to create a new i
  The museum sprite will be sliced to 9 pieces (3* 3), as one piece takes up one tile.
  
 👇🏻Code Snippet: 
-
+```rc
     # BEGIN MUSEUM #
 	960 museum@0,0 (conducts)
 	961 museum@16,0 (conducts)
@@ -135,7 +135,7 @@ Thus, to successfully register a museum into the system, I had to create a new i
 	966 museum@0,32 (conducts)
 	967 museum@16,32 (conducts)
 	968 museum@32,32 (conducts)
-
+```
 ### 3. Develop the corresponding infrastructures for the museum.
 
 Other than static index, adding museums requires following implementations:
@@ -143,7 +143,7 @@ Other than static index, adding museums requires following implementations:
  #### 📍 Update the utility function to specify the size and building cost of a museum
 
 👇🏻Code Snippet:
-
+```java
     public enum MicropolisTool{
 		BULLDOZER(1, 1),
 		WIRE(1, 5), //cost=25 for underwater
@@ -163,11 +163,11 @@ Other than static index, adding museums requires following implementations:
 		MUSEUM(3, 1000),
 		QUERY(1, 0);
 	}
-
+```
  #### 📍 Update the function to allow players to drag a museum to the map
  
 👇🏻Code Snippet:
-
+```java
     boolean apply1(ToolEffectIfc eff){
 		switch (tool){
 			case FIRE: return applyZone(eff, FIRESTATION);
@@ -181,10 +181,10 @@ Other than static index, adding museums requires following implementations:
 			default:throw new Error("unexpected tool: "+tool);
 		}
 	}
-
+```
 #### 📍 Initialize musuem behaviors
 👇🏻Code Snippet: ((many other non-museum behaviors are removed for simplicity))
-
+```java
     Map<String,TileBehavior> tileBehaviors;
     
 	void initTileBehaviors(){
@@ -201,12 +201,11 @@ Other than static index, adding museums requires following implementations:
 		bb.put("MUSEUM", new MapScanner(this, MapScanner.B.MUSEUM));
 		this.tileBehaviors = bb;
 	}
-	
+```	
 ### 4. Prepare for the stats change!	
  #### 📍 Add a function to define museum behaviors
  👇🏻Code Snippet:
- 
-
+```java
     void doMuseum(){
 		boolean powerOn = checkZonePower();
 		city.museumCount++;
@@ -226,10 +225,10 @@ Other than static index, adding museums requires following implementations:
 		double ipop = city.indPop * 1.1;
 		city.indPop = (int)Math.ceil(ipop);
 	}
-	
+```	
  #### 📍 Add a function to apply museum behaviors that creates museum impacts
 👇🏻Code Snippet: (many other non-museum behaviors are removed for simplicity)
-
+```java
     public void apply(){
 		switch (behavior) {
 			case RESIDENTIAL:
@@ -250,13 +249,13 @@ Other than static index, adding museums requires following implementations:
 			default: assert false;
 		}
 	}
-	
+```	
 	
 ### 5. Implement the real-time education coverage map.
 
  #### 📍 Update the function to store zone status
 👇🏻Code Snippet:
-
+```java
     public class ZoneStatus{
 		/** Number from 0 to 27, identifying the type of building. */
 		public int building;
@@ -272,10 +271,10 @@ Other than static index, adding museums requires following implementations:
 		/** Number from 17 to 20, 17=Declining, 18=Stable, etc. */
 		public int growthRate;
 	}
-	
+```	
  #### 📍 Add an education map overlay to the GUI
  👇🏻Code Snippet: 
- 
+ ```java
     public enum MapState{
 		ALL, //ALMAP
 		RESIDENTIAL, //REMAP
@@ -293,11 +292,10 @@ Other than static index, adding museums requires following implementations:
 		FIRE_OVERLAY, //FIMAP
 		POLICE_OVERLAY; //POMAP
 	}
-
+```
  #### 📍 Add a function to check the museum distribution
  👇🏻Code Snippet: 
- 
-
+ ```java
     void checkMuseum() {
 		if (cityTime % 2 == 0) {
 			MicropolisMessage z = null;
@@ -310,11 +308,11 @@ Other than static index, adding museums requires following implementations:
 			lastMuseumCount = museumCount;
 		}
 	}
-	    
+```	    
 	
 #### 📍 Add a function to get the education impact from museums
 👇🏻Code Snippet:
-
+```java
     public int getEducationImpact(int xpos, int ypos) {
 		if (testBounds(xpos, ypos)) {
 			return museumMap[ypos/2][xpos/2];
@@ -323,10 +321,10 @@ Other than static index, adding museums requires following implementations:
 			return 0;
 		}
 	}
-	
+```	
 #### 📍 Add a function to port and grid the education coverage map
 👇🏻Code Snippet:
-
+```java
     private void drawEducationMap(Graphics gr){
 		int [][] A = engine.museumMap;
 		for (int y = 0; y < A.length; y++) {
@@ -335,10 +333,10 @@ Other than static index, adding museums requires following implementations:
 			}
 		}
 	}
-	
+```	
 #### 📍 Add a function to color and render the education coverage map
 👇🏻Code Snippet:
-
+```java
     private int checkEducationOverlay(BufferedImage img, int xpos, int ypos, int tile){
 		int e = engine.getEducationImpact(xpos, ypos);
 		Color c = getCI(e);
@@ -354,10 +352,10 @@ Other than static index, adding museums requires following implementations:
 		}
 		return CLEAR;
 	}
-
+```
  #### 📍 Update the message system to notify players of the building of a new museum and the demand for museums
 👇🏻Code Snippet: (many other non-museum messages are removed for simplicity)
-
+```java
     public enum MicropolisMessage{
 		NEED_RES, 
 		NEED_COM, 
@@ -373,7 +371,7 @@ Other than static index, adding museums requires following implementations:
 		NEW_MUSEUM,
 		NEED_MUSEUM;
 	}
-
+```
 <!---
 Basically what I did is to add museum tiles into the whole program. For this part, it is rather similar to a police station. 
 At the same time, this game is a grid-based game. It scans every tile at different frequencies. 
